@@ -17,7 +17,8 @@ class LoginTests(unittest.TestCase):
 
         self.lp = LoginPage(self.driver)
         self.lp.click_signIn()
-        self.lp.login("savita.badhe", "Sb@#$2020")
+        # please enter your credentials
+        self.lp.login("username", "password")
         self.lp.click_project_link()
         self.lp.click_nit_training_project()
         self.lp.click_on_log_time()
