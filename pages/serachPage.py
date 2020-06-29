@@ -1,8 +1,10 @@
 import xlrd
 from selenium.webdriver.common.keys import Keys
 
+from base.basepage import BasePage
 
-class SearchPage():
+
+class SearchPage(BasePage):
 
     def __init__(self, driver):
         self.driver = driver
@@ -10,7 +12,7 @@ class SearchPage():
         self.google_search_button = "//input[@data-ved='0ahUKEwiFm5Ps3Y3qAhV7yDgGHXjKC1oQ4dUDCAc']"
 
     def read_excel(self):
-        file_path = "C:\\Users\\savita.badhe\\python_workspace\\Python_selenium_Ass\\tests\\sample.xls"
+        file_path = "../Python_selenium_Ass/test_data/sample.xls"
         book = xlrd.open_workbook(file_path)
         print("The number of worksheets is", book.nsheets)
         print("Worksheet name(s):", book.sheet_names())

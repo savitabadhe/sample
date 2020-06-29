@@ -24,19 +24,33 @@ class WebDriverFactory():
         """
         self.browser = browser
 
-    """
-        Set chrome driver and iexplorer environment based on OS
-
-        chromedriver = "C:/.../chromedriver.exe"
-        os.environ["webdriver.chrome.driver"] = chromedriver
-        self.driver = webdriver.Chrome(chromedriver)
-
-        PREFERRED: Set the path on the machine where browser will be executed
-    """
-
     def getWebDriverInstance(self):
 
         baseURL = "https://timesheet.nitorinfotech.net/"
+        if self.browser == "iexplorer":
+            # Set ie driver
+            driver = webdriver.Ie()
+        elif self.browser == "firefox":
+            driver = webdriver.Firefox()
+        elif self.browser == "chrome":
+            # Set chrome driver
+            chromedriver = "C:\\Users\\savita.badhe\\python_workspace\\Python_selenium_Ass\\drivers\\chromedriver.exe"
+            os.environ["webdriver.chrome.driver"] = chromedriver
+            driver = webdriver.Chrome(chromedriver)
+
+        else:
+            driver = webdriver.Firefox()
+        # Setting Driver Implicit Time out for An Element
+        driver.implicitly_wait(3)
+        # Maximize the window
+        driver.maximize_window()
+        # Loading browser with App URL
+        driver.get(baseURL)
+        return driver
+
+    def getWebDriverInstance1(self):
+
+        baseURL = "https://www.google.com/"
         if self.browser == "iexplorer":
             # Set ie driver
             driver = webdriver.Ie()
@@ -57,4 +71,3 @@ class WebDriverFactory():
         # Loading browser with App URL
         driver.get(baseURL)
         return driver
-
